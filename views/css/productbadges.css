@@ -1,0 +1,71 @@
+/**
+ * Product Badges — frontend styles
+ */
+
+/* Safety net: ensure image containers are positioned for absolute children */
+.thumbnail-container,
+.product-thumbnail {
+    position: relative;
+}
+
+/* ── JS-injected badges (wrapper + spans) ─────────────────────────────── */
+
+.pb-badges-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.pb-badge {
+    position: absolute;
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    pointer-events: auto;
+}
+
+.pb-badge.pb-pos-top-left {
+    top: 8px;
+    left: 8px;
+}
+
+.pb-badge.pb-pos-top-right {
+    top: 8px;
+    right: 8px;
+    left: auto;
+}
+
+/* Stack multiple badges of the same side vertically */
+.pb-badges-wrapper .pb-badge.pb-pos-top-left:nth-child(2)  { top: 34px; }
+.pb-badges-wrapper .pb-badge.pb-pos-top-left:nth-child(3)  { top: 60px; }
+.pb-badges-wrapper .pb-badge.pb-pos-top-right:nth-child(2) { top: 34px; }
+.pb-badges-wrapper .pb-badge.pb-pos-top-right:nth-child(3) { top: 60px; }
+
+/* ── <li>-based badges (displayProductFlags hook, when theme supports it) */
+
+.product-flags .pb-badge {
+    position: static;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.product-flags .pb-badge.pb-pos-top-right {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    left: auto;
+}
+
+.product-flags .pb-badge.pb-pos-top-right:nth-child(2) { top: 34px; }
+.product-flags .pb-badge.pb-pos-top-right:nth-child(3) { top: 60px; }
